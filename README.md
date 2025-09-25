@@ -1,6 +1,6 @@
 #  Pazago Assignment - Berkshire Intelligence RAG System
 
-## 📋 Assignment Submission
+## Assignment Submission
 
 **Framework**: Mastra with OpenAI GPT-4o & Pinecone  
 **Status**:  **Production Ready & Deployed**
