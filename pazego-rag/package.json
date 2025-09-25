@@ -30,7 +30,7 @@
     "@mastra/loggers": "^0.10.13",
     "@mastra/memory": "^0.15.3",
     "@pinecone-database/pinecone": "^6.1.2",
-    "dotenv": "^17.2.2",
+    "dotenv": "^16.4.5",
     "langchain": "^0.3.34",
     "pdf-parse": "^1.1.1",
     "pg": "^8.16.3",
@@ -42,5 +42,8 @@
     "@types/node": "^24.5.2",
     "mastra": "^0.13.2",
     "typescript": "^5.9.2"
+  },
+  "overrides": {
+    "dotenv": "^16.4.5"
   }
 }
