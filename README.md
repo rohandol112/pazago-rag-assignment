@@ -5,12 +5,12 @@
 **Framework**: Mastra with OpenAI GPT-4o & Pinecone  
 **Status**: ✅ **Production Ready & Deployed**
 
-### 🌐 **Live Demo**
+###  **Live Demo**
 - **Backend API**: https://pazago-rag-assignment-1.onrender.com
 - **Frontend**: Ready for deployment (connect via environment variable)
 - **Documents**: 337+ chunks from real Berkshire Hathaway letters (2019-2024)
 
-A sophisticated RAG (Retrieval-Augmented Generation) application that provides AI-powered insights from Warren Buffett's Berkshire Hathaway shareholder letters.
+RAG (Retrieval-Augmented Generation) application that provides AI-powered insights from Warren Buffett's Berkshire Hathaway shareholder letters.
 
 ## Features
 
@@ -28,7 +28,6 @@ A sophisticated RAG (Retrieval-Augmented Generation) application that provides A
 - **OpenAI GPT-4o**: For chat completions and embeddings
 - **Pinecone**: Vector database for document storage
 - **LangChain**: PDF processing and text splitting
-- **LibSQL**: Conversation persistence
 
 ### Frontend (React)
 - **React 18**: Modern React with TypeScript
@@ -140,50 +139,5 @@ The system contains:
 - **Chat with RAG Agent**: `POST http://localhost:4111/api/agents/ragAgent/generate`
 - **Mastra Playground**: `http://localhost:4111/`
 
-## UI Features
 
-- Clean, professional design
-- Responsive layout for desktop and mobile
-- Real-time typing indicators
-- Message timestamps
-- Source attribution with relevance scores
-- Markdown rendering for formatted responses
 
-## Example Questions
-
-- "What is Warren Buffett's investment philosophy?"
-- "How does Berkshire evaluate potential acquisitions?"
-- "What are the key principles for long-term investing?"
-- "How does Berkshire approach risk management?"
-- "What does Buffett think about market timing?"
-
-## 🚀 Production Deployment Status
-
-### ✅ **Backend - DEPLOYED & LIVE**
-- **Platform**: Render (Docker deployment)  
-- **URL**: https://pazago-rag-assignment-1.onrender.com
-- **Status**: ✅ Production ready and serving requests
-
-### 🎯 **Frontend - Ready for Deployment**
-Frontend is configured to connect to the live backend:
-```bash
-cd berkshire-frontend
-npm run build
-# Deploy to Vercel, Netlify, or any static hosting
-```
-
-### 🔧 **Testing the Live Backend**
-Test the deployed API directly:
-```bash
-curl -X POST https://pazago-rag-assignment-1.onrender.com/api/agents/ragAgent/generate \
-  -H "Content-Type: application/json" \
-  -d '{"messages":[{"role":"user","content":"What is Warren Buffett'\''s investment philosophy?"}]}'
-```
-
-## License
-
-This project is for educational and demonstration purposes.
-
----
-
-**Berkshire Intelligence** - Bringing Warren Buffett's investment wisdom to your fingertips through AI.
