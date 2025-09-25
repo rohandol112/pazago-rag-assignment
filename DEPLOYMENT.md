@@ -2,7 +2,7 @@
 
 This guide covers multiple deployment options for your RAG application.
 
-## Option 1: Vercel + Railway (Recommended for Simplicity)
+## Option 1: Vercel + Render (Recommended for Simplicity)
 
 ### Frontend (React) on Vercel
 1. **Prepare the frontend**:
@@ -20,24 +20,29 @@ This guide covers multiple deployment options for your RAG application.
 3. **Environment Variables for Vercel**:
    - `REACT_APP_API_URL`: Your backend URL (will be Railway URL)
 
-### Backend (Mastra) on Railway
-1. **Prepare backend for Railway**:
-   - Create `railway.toml` in pazego-rag directory
+### Backend (Mastra) on Render
+1. **Prepare backend for Render**:
+   - Create `render.yaml` in pazego-rag directory (✅ Already created)
    - Ensure your start script is correct
 
-2. **Deploy to Railway**:
-   - Visit railway.app
+2. **Deploy to Render**:
+   - Visit render.com
    - Connect your GitHub repository
-   - Select the pazego-rag folder
+   - Select the pazego-rag folder as root directory
    - Add environment variables
 
-3. **Environment Variables for Railway**:
+3. **Environment Variables for Render**:
    ```
    OPENAI_API_KEY=your_openai_key
    PINECONE_API_KEY=your_pinecone_key
    PINECONE_INDEX_NAME=your_index_name
    PORT=4111
+   NODE_ENV=production
    ```
+
+### Alternative: Backend on Railway
+- Follow the same process using `railway.toml` configuration
+- Railway also offers excellent free tier and auto-deploy
 
 ## Option 2: DigitalOcean App Platform
 
@@ -225,7 +230,7 @@ gcloud run deploy berkshire-frontend --source . --platform managed --region us-c
 - [ ] Database queries optimized
 - [ ] Caching strategy implemented
 
-## Recommended Quick Start: Vercel + Railway
+## Recommended Quick Start: Vercel + Render
 
 For the fastest deployment with minimal configuration:
 
@@ -234,17 +239,21 @@ For the fastest deployment with minimal configuration:
    - Import project to Vercel
    - Deploy automatically
 
-2. **Backend on Railway** (10 minutes):
-   - Connect GitHub repo to Railway
+2. **Backend on Render** (5 minutes):
+   - Connect GitHub repo to Render
+   - Select pazego-rag as root directory
    - Add environment variables
    - Deploy with one click
 
 3. **Update API URL**:
-   - Get Railway backend URL
+   - Get Render backend URL (e.g., https://yourapp.onrender.com)
    - Update frontend to use production API URL
+
+**See detailed guide**: `RENDER_DEPLOY.md`
 
 ## Cost Considerations
 
+- **Vercel + Render**: $0-7/month (generous free tiers, Render starts at $7 for paid)
 - **Vercel + Railway**: $0-20/month (generous free tiers)
 - **DigitalOcean**: $5-10/month (droplet + app platform)
 - **AWS**: $10-50/month (depending on usage)

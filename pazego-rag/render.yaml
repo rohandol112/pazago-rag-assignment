@@ -1,0 +1,18 @@
+version: "1"
+services:
+  - type: web
+    name: berkshire-intelligence-api
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run dev
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4111
+    # Environment variables to be set in Render dashboard:
+    # OPENAI_API_KEY (from your OpenAI account)
+    # PINECONE_API_KEY (from your Pinecone account) 
+    # PINECONE_INDEX_NAME (your index name)
+    # PINECONE_ENVIRONMENT (us-east-1-aws or your region)

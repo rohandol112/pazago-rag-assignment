@@ -1,0 +1,16 @@
+version: "1"
+services:
+  - type: web
+    name: berkshire-intelligence-api
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+    # Render will automatically set PORT environment variable
+    # Add these environment variables in Render dashboard:
+    # OPENAI_API_KEY (from your OpenAI account)
+    # PINECONE_API_KEY (from your Pinecone account) 
+    # PINECONE_INDEX_NAME (your index name)
+    # PINECONE_ENVIRONMENT (us-east-1-aws or your region)

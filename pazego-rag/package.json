@@ -7,7 +7,9 @@
     "dev": "mastra dev",
     "build": "mastra build",
     "start": "mastra start",
-    "process-pdfs": "node process-pdfs.mjs"
+    "process-pdfs": "node process-pdfs.mjs",
+    "docker:build": "docker build -t berkshire-api .",
+    "docker:run": "docker run -p 4111:4111 berkshire-api"
   },
   "keywords": ["rag", "ai", "berkshire", "investment"],
   "author": "",
