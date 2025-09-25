@@ -1,4 +1,4 @@
-# Optimized Dockerfile for Render deployment
+# Optimized single-stage build for Render deployment
 FROM node:20-alpine
 
 WORKDIR /app
@@ -11,7 +11,7 @@ COPY .npmrc ./
 RUN npm install --legacy-peer-deps
 
 # Copy source code with proper ownership
-COPY --chown=mastra:nodejs . .
+COPY --chown=1001:1001 . .
 
 # Build the application
 RUN npm run build
