@@ -11,8 +11,8 @@ export const mastra = new Mastra({
   agents: { 
     ragAgent
   },
-  // No storage needed - we use Pinecone for document storage
-  // Conversations are stateless for this RAG application
+  // Explicitly set storage to undefined - we're stateless using only Pinecone
+  storage: undefined,
   logger: new PinoLogger({
     name: 'BerkshireRAG',
     level: 'info',
