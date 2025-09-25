@@ -62,7 +62,7 @@ const BerkshireChat: React.FC = () => {
       };
       setMessages(prev => [...prev, assistantMessage]);
 
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:4111';
+      const apiUrl = process.env.REACT_APP_API_URL || 'https://pazago-rag-assignment-1.onrender.com';
       const response = await fetch(`${apiUrl}/api/agents/ragAgent/generate`, {
         method: 'POST',
         headers: {

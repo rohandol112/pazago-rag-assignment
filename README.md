@@ -1,6 +1,16 @@
-# Berkshire Intelligence - RAG Application
+# 🚀 Pazago Assignment - Berkshire Intelligence RAG System
 
-A sophisticated RAG (Retrieval-Augmented Generation) application that provides AI-powered insights from Warren Buffett's Berkshire Hathaway shareholder letters (2019-2024).
+## 📋 Assignment Submission
+
+**Framework**: Mastra with OpenAI GPT-4o & Pinecone  
+**Status**: ✅ **Production Ready & Deployed**
+
+### 🌐 **Live Demo**
+- **Backend API**: https://pazago-rag-assignment-1.onrender.com
+- **Frontend**: Ready for deployment (connect via environment variable)
+- **Documents**: 337+ chunks from real Berkshire Hathaway letters (2019-2024)
+
+A sophisticated RAG (Retrieval-Augmented Generation) application that provides AI-powered insights from Warren Buffett's Berkshire Hathaway shareholder letters.
 
 ## Features
 
@@ -147,16 +157,28 @@ The system contains:
 - "How does Berkshire approach risk management?"
 - "What does Buffett think about market timing?"
 
-## Production Deployment
+## 🚀 Production Deployment Status
 
-For production deployment:
+### ✅ **Backend - DEPLOYED & LIVE**
+- **Platform**: Render (Docker deployment)  
+- **URL**: https://pazago-rag-assignment-1.onrender.com
+- **Status**: ✅ Production ready and serving requests
 
-1. **Backend**: Deploy the Mastra application to a cloud provider
-2. **Frontend**: Build and deploy the React app:
-   ```bash
-   npm run build
-   ```
-3. **Environment**: Update API endpoints in frontend to point to production backend
+### 🎯 **Frontend - Ready for Deployment**
+Frontend is configured to connect to the live backend:
+```bash
+cd berkshire-frontend
+npm run build
+# Deploy to Vercel, Netlify, or any static hosting
+```
+
+### 🔧 **Testing the Live Backend**
+Test the deployed API directly:
+```bash
+curl -X POST https://pazago-rag-assignment-1.onrender.com/api/agents/ragAgent/generate \
+  -H "Content-Type: application/json" \
+  -d '{"messages":[{"role":"user","content":"What is Warren Buffett'\''s investment philosophy?"}]}'
+```
 
 ## License
 
