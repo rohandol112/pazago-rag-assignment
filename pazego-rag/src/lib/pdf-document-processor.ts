@@ -27,6 +27,19 @@ export class PDFDocumentProcessor {
   private textSplitter: RecursiveCharacterTextSplitter;
 
   constructor() {
+    // Check if environment variables are loaded
+    if (!process.env.PINECONE_API_KEY) {
+      throw new Error('PINECONE_API_KEY environment variable is required');
+    }
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error('OPENAI_API_KEY environment variable is required');
+    }
+    if (!process.env.PINECONE_INDEX_NAME) {
+      throw new Error('PINECONE_INDEX_NAME environment variable is required');
+    }
+
+    console.log(`Initializing with Pinecone index: ${process.env.PINECONE_INDEX_NAME}`);
+
     this.pinecone = new Pinecone({
       apiKey: process.env.PINECONE_API_KEY!,
     });
@@ -181,7 +194,7 @@ export class PDFDocumentProcessor {
         
         await this.pinecone.createIndex({
           name: indexName,
-          dimension: 1536, // text-embedding-3-small dimension
+          dimension: 1024, // text-embedding-3-small dimension (1024 for our config)
           spec: {
             serverless: {
               cloud: 'aws',
