@@ -1,34 +1,38 @@
-# Optimized single-stage build for Render deployment
+# Use Node.js 20 Alpine for smaller image size
 FROM node:20-alpine
 
-WORKDIR /app
-
-# Create non-root user first for security best practices
+# Create user first (before copying files)
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S mastra -u 1001 -G nodejs
 
-# Copy package files and npm config for better caching
-COPY package*.json ./
-COPY .npmrc ./
+# Set working directory and change ownership
+WORKDIR /app
+RUN chown mastra:nodejs /app
 
-# Install dependencies with legacy peer deps to resolve conflicts
+# Switch to non-root user EARLY
+USER mastra
+
+# Copy package files as non-root user
+COPY --chown=mastra:nodejs package*.json .npmrc ./
+
+# Install dependencies (this takes the most time)
 RUN npm install --legacy-peer-deps
 
-# Copy source code with proper ownership (user now exists)
+# Copy source code as non-root user
 COPY --chown=mastra:nodejs . .
 
 # Build the application
 RUN npm run build
 
-# Clean up npm cache but keep all dependencies (Mastra CLI needs them)
-RUN npm cache clean --force
+# Clean up to reduce image size (optional, but faster without)
+# RUN npm prune --omit=dev --legacy-peer-deps && npm cache clean --force
 
-# Switch to non-root user
-USER mastra
-
-# Expose port for the application (Render will set PORT env var)
+# Expose port
 EXPOSE 4111
 
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:4111/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1))" || exit 1
 
 # Start the application
-CMD ["npm", "run", "start"]
+CMD ["npm", "start"]
